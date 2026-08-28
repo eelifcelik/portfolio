@@ -1,11 +1,293 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = [
+	{
+		name: 'Proje adı bir',
+		year: '2025',
+		description: 'Bu projenin ne yaptığını anlatan tek cümlelik bir açıklama.',
+		href: '#',
+	},
+	{
+		name: 'Proje adı iki',
+		year: '2024',
+		description: 'Bu projenin ne yaptığını anlatan tek cümlelik bir açıklama.',
+		href: '#',
+	},
+	{
+		name: 'Proje adı üç',
+		year: '2024',
+		description: 'Bu projenin ne yaptığını anlatan tek cümlelik bir açıklama.',
+		href: '#',
+	},
+];
+
+const nav = [
+	{ label: 'About Me', href: '#about' },
+	{ label: 'Experience', href: '#experience' },
+	{ label: 'Education', href: '#education' },
+	{ label: 'Projects', href: '#projects' },
+	{ label: 'Contact', href: '#contact' },
+];
+
+const experience = [
+	{
+		date: 'Feb 2026 — Apr 2026',
+		role: 'AI Skills Trainer for Young Women in Tech',
+		org: 'UP School (Google & UpSchool)',
+		description:
+			'Delivering in-depth training and technical mentorship in the Google AI Essentials course, guiding students through LLMs, advanced prompt engineering, and agentic workflows for real-world productivity.',
+		tags: ['LLMs', 'Prompt Engineering', 'Agentic Workflows'],
+	},
+	{
+		date: 'Sep 2023 — Sep 2025 · Istanbul',
+		role: 'System Monitoring Specialist',
+		org: 'Turkish Technology (Turkish Airlines Group)',
+		description:
+			'Specialized in proactive incident response and minimizing system downtime by implementing real-time monitoring and custom alert configurations for complex enterprise environments.',
+		tags: ['SolarWinds', 'OpenText OBM', 'SiteScope', 'Zabbix', 'Linux'],
+	},
+	{
+		date: 'Jul — Aug 2021 · Istanbul',
+		role: 'R&D Intern',
+		org: 'ZENO Bilişim ve Danışmanlık',
+		description:
+			'Developed a computer vision solution for textile classification using Azure Cognitive Services — from image scraping with Selenium to ML pipelines in Azure ML Studio.',
+		tags: ['Python', 'Azure ML', 'Computer Vision', 'Selenium'],
+	},
+];
+
+const education = [
+	{
+		date: '2025 — Present',
+		degree: 'MSc Computer Science',
+		school: 'TU Dresden',
+		location: 'Dresden',
+	},
+	{
+		date: '2018 — 2023',
+		degree: 'BSc Computer Engineering',
+		school: 'Çanakkale Onsekiz Mart University',
+		location: 'Çanakkale',
+	},
+	{
+		date: '2021 — 2022',
+		degree: 'Erasmus Exchange',
+		school: 'AGH University of Science and Technology',
+		location: 'Kraków',
+	},
+];
+
+const writing = [
+	{
+		year: '2022',
+		title: 'Learning Python From Scratch (8-part series) · CodeX',
+		href: 'https://medium.com/@elifcelik/learning-python-from-scratch-part-1-3ca8e4990508',
+	},
+	{
+		year: '2022',
+		title: 'Getting Started with TensorFlow: Fashion MNIST',
+		href: 'https://medium.com/@elifcelik/getting-started-to-tensorflow-with-fashion-mnist-1efcdc3f3a81',
+	},
+	{
+		year: '2022',
+		title: 'An Amusing Way to Escape From Hell: HADES',
+		href: 'https://medium.com/@elifcelik/an-amusing-way-to-escape-from-hell-hades-1271c07b580c',
+	},
+];
+
+const socials = [
+	{ label: 'GitHub', href: 'https://github.com/eelifcelik', icon: 'simple-icons:github' },
+	{ label: 'LinkedIn', href: 'https://linkedin.com/in/eelifcelik', icon: 'simple-icons:linkedin' },
+	{ label: 'Medium', href: 'https://medium.com/@elifcelik', icon: 'mdi:medium' },
+	{ label: 'Email', href: 'mailto:eelifcelik99@gmail.com', icon: 'lucide:mail' },
+];
+
+const links = [
+	{ label: 'Email', href: 'mailto:eelifcelik99@gmail.com' },
+	{ label: 'GitHub', href: 'https://github.com/eelifcelik' },
+	{ label: 'LinkedIn', href: 'https://linkedin.com/in/eelifcelik' },
+	{ label: 'Medium', href: 'https://medium.com/@elifcelik' },
+];
 ---
 
 <Layout>
-	<Welcome />
+	<div class="max-w-6xl mx-auto px-6 md:px-12 min-h-screen md:flex md:justify-between md:gap-12">
+		<header
+			class="py-16 md:w-1/2 md:sticky md:top-0 md:h-screen md:py-24 md:flex md:flex-col md:justify-between"
+		>
+			<div>
+				<h1 class="text-5xl md:text-6xl font-semibold tracking-tight text-display">Elif Celik</h1>
+				<p class="mt-3 font-mono text-sm text-muted">
+					Computer Science Student, TU Dresden
+				</p>
+
+				<nav class="mt-10">
+					<ul class="flex flex-col space-y-2">
+						{
+							nav.map((item) => (
+								<li>
+									<a
+										href={item.href}
+										class="font-mono text-sm uppercase tracking-wider text-muted hover:text-accent"
+									>
+										{item.label}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+			</div>
+
+			<div class="mt-16 md:mt-0 flex gap-5">
+				{
+					socials.map((social) => (
+						<a
+							href={social.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={social.label}
+							class="text-muted hover:text-accent"
+						>
+							<Icon name={social.icon} class="w-6 h-6" />
+						</a>
+					))
+				}
+			</div>
+		</header>
+
+		<main class="py-8 md:w-1/2 md:py-24">
+			<section id="about">
+				<h2 class="font-mono text-sm uppercase tracking-wider text-muted mb-6">
+					About Me
+				</h2>
+				<p class="mt-6 md:mt-0 leading-relaxed text-base">
+					Before Dresden, I spent two years in Istanbul (a city run by its cats) as a
+					System Monitoring Specialist at Turkish Airlines, working on real-time
+					monitoring for reliable enterprise systems. I did my bachelor's in
+					Çanakkale and a semester of Erasmus in Kraków. Alongside all this, I've been
+					teaching AI and prompt engineering to university students through UP School,
+					mostly to encourage more women into tech.
+				</p>
+				<p class="mt-4 leading-relaxed text-base">
+					Right now I'm most curious about LLMs, AI agents, RAG, and orchestration on
+					one side, and system design, distributed systems, and reliability on the
+					other.
+				</p>
+				<p class="mt-4 leading-relaxed text-base">
+					I'm also learning German. Currently A1, working toward B2.
+				</p>
+			</section>
+
+			<section id="experience" class="mt-24">
+				<h2 class="font-mono text-sm uppercase tracking-wider text-muted mb-6">
+					Experience
+				</h2>
+				<div class="mt-6 md:mt-0">
+					{
+						experience.map((job) => (
+							<div class="mt-8 md:grid md:grid-cols-8 md:gap-4">
+								<p class="font-mono text-xs text-muted uppercase tracking-wider md:col-span-2">
+									{job.date}
+								</p>
+								<div class="mt-1 md:mt-0 md:col-span-6">
+									<p>
+										<span class="text-ink font-medium hover:text-accent transition-colors duration-200">
+											{job.role}
+										</span>
+										<span class="text-muted"> · {job.org}</span>
+									</p>
+									<p class="text-muted text-sm mt-2">{job.description}</p>
+									<div class="font-mono text-xs mt-3 flex flex-wrap gap-2">
+										{job.tags.map((tag) => (
+											<span class="bg-accent/10 text-accent px-2 py-1 rounded">
+												{tag}
+											</span>
+										))}
+									</div>
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<section id="education" class="mt-24">
+				<h2 class="font-mono text-sm uppercase tracking-wider text-muted mb-6">
+					Education
+				</h2>
+				<div class="mt-6 md:mt-0">
+					{
+						education.map((edu) => (
+							<div class="mt-8 md:grid md:grid-cols-8 md:gap-4">
+								<p class="font-mono text-xs text-muted uppercase tracking-wider md:col-span-2">
+									{edu.date} · {edu.location}
+								</p>
+								<div class="mt-1 md:mt-0 md:col-span-6">
+									<p>
+										<span class="text-ink font-medium">{edu.degree}</span>
+										<span class="text-muted"> · {edu.school}</span>
+									</p>
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<section id="projects" class="mt-24">
+				<h2 class="font-mono text-sm uppercase tracking-wider text-muted mb-6">
+					Projects
+				</h2>
+				<p class="text-muted text-sm italic">More projects coming soon.</p>
+				<h3 class="font-mono text-xs uppercase tracking-wider text-muted mt-12 mb-6">
+					Notes & Writing
+				</h3>
+				<div>
+					{
+						writing.map((post) => (
+							<a
+								href={post.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="block mt-4 md:grid md:grid-cols-8 md:gap-4"
+							>
+								<span class="font-mono text-xs text-muted uppercase tracking-wider md:col-span-2">
+									{post.year}
+								</span>
+								<span class="mt-1 md:mt-0 md:col-span-6 text-ink hover:text-accent transition-colors duration-200 block">
+									{post.title} →
+								</span>
+							</a>
+						))
+					}
+				</div>
+			</section>
+
+			<section id="contact" class="mt-24">
+				<h2 class="font-mono text-sm uppercase tracking-wider text-muted mb-6">
+					Contact
+				</h2>
+				<p class="mt-6 md:mt-0 leading-relaxed text-base">
+					Feel free to reach out :)
+				</p>
+				<div class="mt-6 flex flex-wrap gap-6">
+					{
+						links.map((link) => (
+							<a
+								href={link.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-accent hover:text-accent-hover font-medium"
+							>
+								{link.label}
+							</a>
+						))
+					}
+				</div>
+			</section>
+		</main>
+	</div>
 </Layout>
